@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yoohyeonie - Last.fm stats</title>
+</head>
+<body>
+<pre id="stats">loading…</pre>
+<script>
+fetch('data.json', { cache: 'no-store' })
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById('stats').textContent = JSON.stringify(d, null, 2);
+  })
+  .catch(err => {
+    document.getElementById('stats').textContent = 'failed to load data.json';
+    console.error(err);
+  });
+</script>
+</body>
+</html>
